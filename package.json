@@ -9,8 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^1.6.7",
+    "cors": "^2.8.5",
     "cytoscape": "^3.28.1",
     "cytoscape-cola": "^2.5.1",
+    "cytoscape-graphml": "^1.0.6",
+    "d3": "^7.8.5",
+    "d3-scale": "^4.0.2",
+    "d3-selection": "^1.4.2",
+    "d3-zoom": "^3.0.0",
     "next": "14.0.4",
     "react": "^18",
     "react-cytoscapejs": "^2.0.0",

@@ -4,29 +4,23 @@ import CytoscapeComponent from "react-cytoscapejs";
 import cytoscape from "cytoscape";
 import cola from 'cytoscape-cola';
 
+var graphml = require("cytoscape-graphml");
+
 cytoscape.use(cola);
 
-export default function CytoscapeGraph() {
+function generateRandomColors(numColors) {
+  const colors = [];
+  for (let i = 0; i < numColors; i++) {
+    // Generate a random color code (hex format)
+    const color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    colors.push(color);
+  }
+  return colors;
+}
+
+export default function CytoscapeGraph({graphData, setGraphData}) {
   const [width, setWith] = useState("100%");
   const [height, setHeight] = useState("400px");
-  const [graphData, setGraphData] = useState({
-    nodes: [
-      { data: { id: 'user1', label: 'User 1' } },
-      { data: { id: 'user2', label: 'User 2' } },
-      { data: { id: 'user3', label: 'User 3' } },
-      { data: { id: 'user4', label: 'User 4' } },
-      { data: { id: 'user5', label: 'User 5' } },
-      { data: { id: 'user6', label: 'User 6' } },
-    ],
-    edges: [
-      { data: { id: 'edge1', source: 'user1', target: 'user2' } },
-      { data: { id: 'edge2', source: 'user1', target: 'user3' } },
-      { data: { id: 'edge3', source: 'user2', target: 'user4' } },
-      { data: { id: 'edge4', source: 'user3', target: 'user5' } },
-      { data: { id: 'edge5', source: 'user4', target: 'user6' } },
-      { data: { id: 'edge6', source: 'user5', target: 'user6' } }
-    ],
-  });
 
   const layout = {
     name: "cola",
@@ -44,7 +38,7 @@ export default function CytoscapeGraph() {
         'color': '#fff',
         'text-outline-color': '#4CAF50',
         'text-outline-width': 2,
-        'shape': 'roundrectangle'
+        'shape': 'circle'
       }
     },
     {
